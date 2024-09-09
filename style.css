@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffefcc;
+    font-family: 'Arial', sans-serif;
+    background: url("https://images.unsplash.com/photo-1499002238440-d264edd596ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+    background-size: cover;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    /* width: 250px; */
+}
+
+h1 {
+    font-size: 3em;
+    color: #ff4081;
+    margin-bottom: 20px;
+}
+
+.cake {
+    position: relative;
+    cursor: pointer;
+    width: 250px;
+}
+
+.cake div {
+    width: 100%;
+    border-radius: 10px;
+    border: 3px solid #d2691e;
+}
+
+.top-layer {
+    height: 50px;
+    background-color: #ff6347;
+}
+.middle-layer {
+    height: 60px;
+    background-color: #ff8c00;
+}
+
+.third-layer {
+    height: 65px;
+    background-color: #ffb347;
+}
+
+.fourth-layer {
+    height: 70px;
+    background-color: #ffd700;
+}
+
+.bottom-layer {
+    height: 100px;
+    background-color: #ffa500;
+}
+.bottom-layer img{
+    height: 90px;
+    width: 50px;
+}
+@keyframes moveLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-1500px) rotate(-15deg);
+    }
+}
+
+
+/* @keyframes moveRight {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(300px) rotate(15deg);
+    }
+} */
+
+
+/* Additional styles for candle */
+.candle {
+    text-align: center;
+    font-size: 30px;
+    margin-top: -25px;
+}
+
+/* Style for the buttons */
+button {
+    padding: 5px 10px;
+    background-color: #ff4081;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #ff6581;
+    border-radius: 5px;
+}
+
+/* Candle lit style */
+.candle-lit {
+    color: orange;
+}
+
+.clock {
+    display: flex;
+}
+
+.clock div {
+margin: 5px;
+position: relative;
+}
+
+.clock span {
+width: 100px;
+height: 80px;
+background: slateblue;
+opacity: 0.8;
+color: white;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 50px;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.clock .text {
+height: 30px;
+font-size: 10px;
+text-transform: uppercase;
+letter-spacing: 2px;
+background: darkblue;
+opacity: 0.8;
+}
+
+.clock #ampm {
+bottom: 0;
+position: absolute;
+width: 60px;
+height: 30px;
+font-size: 20px;
+background: green;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#videoContainer {
+    margin-left: 20px;
+}
+
+video {
+    border: 2px solid #d2691e;
+    border-radius: 10px;
+}
+
+.wish, .wish a {
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 0px auto;
+    padding-left: 10px;
+}
+
+#fullscreenVideoContainer {
+    display: none;
+    position: fixed;
+    width: 90%;
+    height: 90%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    z-index: 9999;
+}
+
+#fullscreenVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure the video fits within the screen without being stretched */
+    background-color: black; /* Ensure background behind the video is black */
+}

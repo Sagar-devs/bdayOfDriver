@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Music Player</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url("https://images.unsplash.com/photo-1499002238440-d264edd596ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .music-player {
+            background-color: rgba(0, 0, 0, 0.8);
+            width: 400px;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            color: white;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid #fff;
+        }
+
+        .song-name {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .controls button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .controls button:hover {
+            transform: scale(1.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Style for audio element */
+        audio {
+            width: 100%;
+            margin-top: 20px;
+        }
+        button:active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="music-player">
+        <!-- Profile Image -->
+        <img id="profileImg" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="profile-img">
+        
+        <!-- Song Name -->
+        <div class="song-name" id="songName">Manasa's Wishes</div>
+
+        <!-- Audio Controls -->
+        <div class="controls">
+            <button id="prevBtn">&#9664;</button> <!-- Previous Button -->
+            <button id="playBtn">&#9658;</button> <!-- Play Button (Play Icon) -->
+            <button id="nextBtn">&#9654;</button> <!-- Next Button -->
+        </div>
+
+        <!-- Audio Element -->
+        <audio id="audio" src="manasa.mp3"></audio><br>
+        <a href="index.html" style="color: white;">Go back for celebrations</a>
+    </div>
+
+    <script>
+        // Audio files and related data
+        const songs = [
+            {
+                name: "Manasa's Wishes",
+                src: "manasa.mp3",
+                img: "https://res.cloudinary.com/dgeapuy5y/image/upload/c_crop,ar_3:4/v1725882491/WhatsApp_Image_2024-09-09_at_4.48.42_PM_ylwuot.jpg"
+            },
+            {
+                name: "Sai's Wishes",
+                src: "sai.mp3",
+                img: "https://res.cloudinary.com/dgeapuy5y/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1725871645/IMG-20240816-WA0004_tze19r.jpg"
+            },
+            {
+                name: "Kowsalya's Wishes",
+                src: "kowsalya.mp3",
+                img: "https://res.cloudinary.com/dgeapuy5y/image/upload/v1725872392/449313923_3661574324110055_6577673238976096529_n.webp_gdbf9e.jpg"
+            },
+            {
+                name: "Pawan's Wishes",
+                src: "pawan.mp3",
+                img: "https://res.cloudinary.com/dgeapuy5y/image/upload/v1725871891/IMG_20220203_075126_akzxva.jpg"
+            },
+            {
+                name: "Vamsi's Wishes",
+                src: "vamsi.mp3",
+                img: "https://res.cloudinary.com/dgeapuy5y/image/upload/v1725872057/IMG_20230626_110711_jhas8d.jpg"
+            },
+            {
+                name: "Dinesh Reddy's Wishes",
+                src: "dinesh.mp3",
+                img: "https://res.cloudinary.com/dgeapuy5y/image/upload/v1725872597/IMG20221018091308_wdpppq.jpg"
+            }
+        ];
+
+        let currentSongIndex = 0;
+        const audio = document.getElementById("audio");
+        const playBtn = document.getElementById("playBtn");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const songName = document.getElementById("songName");
+        const profileImg = document.getElementById("profileImg");
+
+        // Toggle play/pause
+        playBtn.addEventListener("click", () => {
+            if (audio.paused) {
+                audio.play();
+                playBtn.innerHTML = "&#10074;&#10074;"; // Change to pause icon
+            } else {
+                audio.pause();
+                playBtn.innerHTML = "&#9658;"; // Change to play icon
+            }
+        });
+
+        // Play the next song
+        nextBtn.addEventListener("click", () => {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            loadSong(currentSongIndex);
+            audio.play();
+            playBtn.innerHTML = "&#10074;&#10074;";
+        });
+
+        // Play the previous song
+        prevBtn.addEventListener("click", () => {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            loadSong(currentSongIndex);
+            audio.play();
+            playBtn.innerHTML = "&#10074;&#10074;";
+        });
+
+        // Load song details (name, image, and source)
+        function loadSong(index) {
+            const song = songs[index];
+            songName.textContent = song.name;
+            audio.src = song.src;
+            profileImg.src = song.img;
+        }
+
+        // Automatically load the first song on page load
+        loadSong(currentSongIndex);
+
+        // Change play button back to play icon when song ends
+        audio.addEventListener("ended", () => {
+            playBtn.innerHTML = "&#9658;";
+        });
+    </script>
+</body>
+</html>

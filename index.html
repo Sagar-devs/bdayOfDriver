@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Cake</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="clocks">
+    <div class="clock">
+        <div>
+            <span id="days">00</span>
+            <span class="text">Days</span>
+        </div>
+        <div>
+            <span id="hour">00</span>
+            <span class="text">Hours</span>
+        </div>
+        <div>
+            <span id="minutes">00</span>
+            <span class="text">Minutes</span>
+        </div>
+        <div>
+            <span id="seconds">00</span>
+            <span class="text">Seconds</span>
+        </div>
+        <div>
+            <span id="ampm"></span>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="display: none;">
+    <h1>Happy Birthday!</h1>
+    <p class="wish">Before you cut the cake there are few Wishes which is send from your close people <a href="voiceNotes.html">click here</a></p><br><br>
+    <div class="content">
+        <div class="cake" id="cake">
+            <div class="candle" id="candle">🕯️</div>
+            <div class="top-layer">Happy</div>
+            <div class="third-layer">Birthday</div>
+            <div class="fourth-layer">DRIVER</div>
+            <div class="middle-layer">100 kgs cake</div>
+            <div class="bottom-layer">
+                <img src="1.jpg" alt="">
+                <img src="2.jpg" alt="">
+                <img src="3.jpg" alt="">
+                <img src="4.jpg" alt="">
+            </div>
+        </div>
+        <div id="videoContainer" style="display: none;">
+            <video id="birthdayVideo" width="320" height="240" controls>
+                <source src="birthday_video.mp4" type="video/mp4"> <!-- Video beside the cake -->
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    <br>
+    <div class="wish">Happy Birthday DRIVER sab</div>
+    <button id="lightCandleBtn">Light Candle</button>
+    <button id="cutCakeBtn">Cut Cake</button>
+
+    <div id="surpriseOptions" style="display: none;">
+        <h3 class="wish">Do you want more surprise?</h3>
+        <button id="yesBtn">Yes</button>
+        <button id="noBtn">No</button>
+    </div>
+
+    <div id="noMessage" style="display: none;">
+        <h3 class="wish">Thanks for celebrations! Go and do your work.</h3>
+    </div>
+    
+    
+    <audio id="backgroundMusic" src="birthday_song.mp3"></audio>
+    <audio id="timeCompletedSound" src="timecompleted.mp3"></audio>
+    <audio id="knifeSound" src="knife.mp3"></audio>
+
+</div>
+
+
+
+<script src="script.js"></script>
+</body>
+</html>
